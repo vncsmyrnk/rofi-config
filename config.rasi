@@ -26,5 +26,4 @@ entry {
 
 inputbar {
   padding: 4px;
-  children: [ entry ];
 }
