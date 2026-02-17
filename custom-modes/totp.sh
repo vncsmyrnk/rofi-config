@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -n "$*" ]]; then
-  util totp generate "$@" >/dev/null || notify-send "Failed to generate TOTP"
+  util totp generate "$@" >/dev/null || notify-send "Failed to generate TOTP" --urgency critical
   exit 0
 fi
 

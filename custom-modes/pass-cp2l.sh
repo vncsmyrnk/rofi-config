@@ -3,7 +3,7 @@
 pass_names_files=$(fd . --base-directory ~/.password-store --relative-path -t f)
 
 if [[ -n "$*" ]]; then
-  util pass cp2l -t 1 "$@" >/dev/null || notify-send "Failed to copy password"
+  util pass cp2l -t 1 "$@" >/dev/null || notify-send "Failed to copy password" --urgency critical
   exit 0
 fi
 
