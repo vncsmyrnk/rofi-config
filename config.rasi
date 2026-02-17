@@ -1,5 +1,9 @@
 @theme "gruvbox-dark-hard"
 
+configuration {
+  modes: "pass:~/.config/rofi/custom-modes/pass.sh,pw2l:~/.config/rofi/custom-modes/pass-cp2l.sh,totp:~/.config/rofi/custom-modes/totp.sh,urls:~/.config/rofi/custom-modes/urls.sh";
+}
+
 * {
   font: "JetBrainsMono Nerd Font 13";
 }
