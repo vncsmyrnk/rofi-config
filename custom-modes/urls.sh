@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Opens useful URLs using google chrome
+#
 # This script expect URLs to be set at $HOME/Documents/useful-urls with the following format:
 # "description1=https://example.com\ndescription2=https://example.com"
 
@@ -16,7 +18,19 @@ while IFS= read -r line; do
 done <"$useful_urls_file"
 
 if [[ -n "$*" ]]; then
-  xdg-open "${urls["$@"]}" >/dev/null
+  google-chrome-stable "${urls["$@"]}" >/dev/null
+
+  { # Focus on the newest chrome instance via GNOME dbus if available
+    busctl --user call \
+      org.gnome.Shell \
+      /org/gnome/Shell/Extensions/Windows \
+      org.gnome.Shell.Extensions.Windows \
+      List \
+      --json=short |
+      jq -r '.data[0]' | jq -r 'last(.[] | select(.wm_class == "google-chrome") | .id)' |
+      xargs -I{} sh -c 'busctl --user call org.gnome.Shell /org/gnome/Shell/Extensions/Windows org.gnome.Shell.Extensions.Windows Activate u {}'
+  } || exit 0 # Fails silently
+
   exit 0
 fi
 
