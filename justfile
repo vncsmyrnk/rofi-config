@@ -4,7 +4,7 @@ default:
 install: config
 
 config:
-  @rm -f {{home_dir()}}/.config/rofi
+  @rm -rf {{home_dir()}}/.config/rofi
   mkdir -p {{home_dir()}}/.config/rofi
   stow -t {{home_dir()}}/.config/rofi .
 
