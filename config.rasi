@@ -1,0 +1,30 @@
+@theme "gruvbox-dark-hard"
+
+* {
+  font: "JetBrainsMono Nerd Font 13";
+}
+
+window {
+  width: 20%;
+  border-radius: 5px;
+  border: 1px;
+}
+
+element {
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  spacing: 5px;
+}
+
+element-icon {
+  size: 1.2em;
+}
+
+entry {
+  placeholder: "Search";
+}
+
+inputbar {
+  padding: 4px;
+  children: [ entry ];
+}
