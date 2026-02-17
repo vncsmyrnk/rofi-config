@@ -11,13 +11,7 @@ window {
 }
 
 element {
-  orientation: horizontal;
-  children: [ element-icon, element-text ];
-  spacing: 5px;
-}
-
-element-icon {
-  size: 1.2em;
+  padding: 2px 2px 2px 10px;
 }
 
 entry {
