@@ -2,6 +2,10 @@
 
 configuration {
   modes: "pass:~/.config/rofi/custom-modes/pass.sh,pw2l:~/.config/rofi/custom-modes/pass-cp2l.sh,totp:~/.config/rofi/custom-modes/totp.sh,urls:~/.config/rofi/custom-modes/urls.sh,wind:~/.config/rofi/custom-modes/windows-gnome-dbus.sh,opwn:~/.config/rofi/custom-modes/windows-opened-gnome-dbus.sh";
+  kb-mode-next: "Tab";
+  kb-mode-previous: "ISO_Left_Tab";
+  kb-element-next: "";
+  kb-element-prev: "";
 }
 
 * {
