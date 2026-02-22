@@ -6,7 +6,13 @@ install-window-calls-extension:
   gnome-extensions install /tmp/window-call-extension.zip
   gnome-extensions enable window-calls@domandoman.xyz
 
-install: install-window-calls-extension config
+install-rofi:
+  #!/usr/bin/env bash
+  if [ "{{os}}" = "Arch Linux" ]; then
+    yay -S --needed rofi
+  fi
+
+install: install-rofi install-window-calls-extension config
 
 config:
   @rm -rf "{{home_dir()}}/.config/rofi"
