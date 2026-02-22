@@ -5,12 +5,13 @@
 configuration {
   modes: [
     "combi",
-    "urls:~/.config/rofi/custom-modes/urls.sh",
     "pass:~/.config/rofi/custom-modes/pass.sh",
     "totp:~/.config/rofi/custom-modes/totp.sh",
     "pw2l:~/.config/rofi/custom-modes/pass-cp2l.sh",
     "opwn:~/.config/rofi/custom-modes/windows-opened-gnome-dbus.sh",
-    "wind:~/.config/rofi/custom-modes/windows-gnome-dbus.sh"
+    "wind:~/.config/rofi/custom-modes/windows-gnome-dbus.sh",
+    "urls:~/.config/rofi/custom-modes/urls.sh",
+    "powr:~/.config/rofi/custom-modes/power.sh"
   ];
   kb-mode-next: "Tab";
   kb-mode-previous: "ISO_Left_Tab";
