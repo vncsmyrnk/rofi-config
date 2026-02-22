@@ -35,4 +35,5 @@ fi
 bustctl_dbus_list_windows |
   jq -r '.data[0]' |
   jq -r '.[] | (.wm_class // "unknown") + " | " + .title' |
-  tac
+  tac |
+  sed '1d'
