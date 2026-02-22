@@ -1,3 +1,5 @@
+os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
+
 default:
   just --list
 
@@ -18,7 +20,6 @@ config:
   @rm -rf "{{home_dir()}}/.config/rofi"
   mkdir -p "{{home_dir()}}/.config/rofi"
   stow -t "{{home_dir()}}/.config/rofi" .
-  dconf load / < gnome/keybindings.conf
 
 unset-config:
   stow -D -t "{{home_dir()}}/.config/rofi" .
