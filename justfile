@@ -9,10 +9,10 @@ install-window-calls-extension:
 install: install-window-calls-extension config
 
 config:
-  @rm -rf {{home_dir()}}/.config/rofi
-  mkdir -p {{home_dir()}}/.config/rofi
-  stow -t {{home_dir()}}/.config/rofi .
+  @rm -rf "{{home_dir()}}/.config/rofi"
+  mkdir -p "{{home_dir()}}/.config/rofi"
+  stow -t "{{home_dir()}}/.config/rofi" .
   dconf load / < gnome/keybindings.conf
 
 unset-config:
-  stow -D -t {{home_dir()}}/.config/rofi .
+  stow -D -t "{{home_dir()}}/.config/rofi" .
