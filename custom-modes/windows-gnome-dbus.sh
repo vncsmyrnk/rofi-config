@@ -24,7 +24,7 @@ bustctl_dbus_activate_window() {
 }
 
 if [[ -n "$*" ]]; then
-  mapfile -t desktop_filenames_matching_input < <(grep -h "^Name=$*" /usr/share/applications/*.desktop -l)
+  mapfile -t desktop_filenames_matching_input < <(grep -h "Name=$*" "$CACHE_FILE" | cut -d: -f1)
   for file in "${desktop_filenames_matching_input[@]}"; do
     wm_class=$(basename "$file" | rev | cut -f2- -d "." | rev)
     opened_window_ids=$(
@@ -45,11 +45,10 @@ if [[ -n "$*" ]]; then
 fi
 
 if [[ ! -f "$CACHE_FILE" ]]; then
-  grep -h "^Name=" /usr/share/applications/*.desktop |
-    cut -d= -f2- |
-    sort -u |
-    tee "$CACHE_FILE"
+  grep "^Name=" /usr/share/applications/*.desktop |
+    tee "$CACHE_FILE" |
+    awk -F= '{ print $2 }'
   exit 0
 fi
 
-cat "$CACHE_FILE"
+awk -F= '{ print $2 }' "$CACHE_FILE"
