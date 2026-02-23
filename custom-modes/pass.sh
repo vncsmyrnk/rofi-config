@@ -1,13 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-pass_names_files=$(fd . --base-directory ~/.password-store --relative-path -t f)
+CACHE_FILE=/tmp/rofi-pass-cache
 
 if [[ -n "$*" ]]; then
   pass -c "$@" >/dev/null || notify-send "Failed to copy password" --urgency critical
   exit 0
 fi
 
-for f in $pass_names_files; do
-  pass_name=$(echo "$f" | rev | cut -f2- -d "." | rev)
-  echo "$pass_name"
-done
+if [[ ! -f "$CACHE_FILE" ]]; then
+  fd . --base-directory ~/.password-store --relative-path -t f |
+    rev |
+    cut -f2- -d "." |
+    rev |
+    tee "$CACHE_FILE"
+  exit 0
+fi
+
+cat "$CACHE_FILE"
