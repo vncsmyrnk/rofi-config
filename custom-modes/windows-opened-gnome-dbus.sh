@@ -25,7 +25,7 @@ bustctl_dbus_activate_window() {
 
 input="$*"
 if [[ -n "$input" ]]; then
-  window_title="${input##*| }"
+  window_title="${input#*| }"
   window_id=$(
     grep -h ";$window_title$" "$CACHE_FILE" |
       cut -d ';' -f1
