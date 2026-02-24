@@ -5,7 +5,7 @@
 
 CACHE_FILE=/tmp/rofi-opened-applications-list-cache
 
-bustctl_dbus_list_windows() {
+busctl_dbus_list_windows() {
   busctl --user call \
     org.gnome.Shell \
     /org/gnome/Shell/Extensions/Windows \
@@ -14,7 +14,7 @@ bustctl_dbus_list_windows() {
     --json=short
 }
 
-bustctl_dbus_activate_window() {
+busctl_dbus_activate_window() {
   busctl --user call \
     org.gnome.Shell \
     /org/gnome/Shell/Extensions/Windows \
@@ -31,11 +31,11 @@ if [[ -n "$input" ]]; then
       cut -d ';' -f1
   )
 
-  bustctl_dbus_activate_window "$window_id"
+  busctl_dbus_activate_window "$window_id"
   exit 0
 fi
 
-bustctl_dbus_list_windows |
+busctl_dbus_list_windows |
   jq -r '.data[0]' |
   jq -r '.[] | (.id | tostring) + ";" + (.wm_class // "unknown") + ";" + .title' |
   tac |

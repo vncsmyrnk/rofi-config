@@ -5,7 +5,7 @@
 
 CACHE_FILE=/tmp/rofi-applications-list-cache
 
-bustctl_dbus_list_windows() {
+busctl_dbus_list_windows() {
   busctl --user call \
     org.gnome.Shell \
     /org/gnome/Shell/Extensions/Windows \
@@ -14,7 +14,7 @@ bustctl_dbus_list_windows() {
     --json=short
 }
 
-bustctl_dbus_activate_window() {
+busctl_dbus_activate_window() {
   busctl --user call \
     org.gnome.Shell \
     /org/gnome/Shell/Extensions/Windows \
@@ -28,14 +28,14 @@ if [[ -n "$*" ]]; then
   for file in "${desktop_filenames_matching_input[@]}"; do
     wm_class=$(basename "$file" | rev | cut -f2- -d "." | rev)
     opened_window_ids=$(
-      bustctl_dbus_list_windows |
+      busctl_dbus_list_windows |
         jq -r '.data[0]' |
         jq -r --arg wmClass "$wm_class" '.[] | select(.wm_class == $wmClass) | .id'
     )
 
     if [[ -n "$opened_window_ids" ]]; then
       opened_window_id=$(echo "$opened_window_ids" | tail -n 1)
-      bustctl_dbus_activate_window "$opened_window_id"
+      busctl_dbus_activate_window "$opened_window_id"
       exit 0
     fi
   done
