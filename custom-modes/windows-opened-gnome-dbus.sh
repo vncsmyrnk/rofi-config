@@ -41,4 +41,4 @@ busctl_dbus_list_windows |
   tac |
   sed '1d' |
   tee "$CACHE_FILE" |
-  awk -F ';' '{ print $2 " | " $3}'
+  awk -F ';' '{ sub(/.*\./, "", $2); print tolower($2) " | " $3}'
