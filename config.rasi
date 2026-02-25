@@ -10,6 +10,7 @@ configuration {
     "pw2l:~/.config/rofi/custom-modes/pass-cp2l.sh",
     "opwn:~/.config/rofi/custom-modes/windows-opened-gnome-dbus.sh",
     "wind:~/.config/rofi/custom-modes/windows-gnome-dbus.sh",
+    "tmux:~/.config/rofi/custom-modes/tmux-sessions.sh",
     "urls:~/.config/rofi/custom-modes/urls.sh",
     "powr:~/.config/rofi/custom-modes/power.sh"
   ];
