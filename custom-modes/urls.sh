@@ -34,7 +34,7 @@ if [[ -n "$input" ]]; then
     grep -h "^$input=" "$USEFUL_URLS_FILE"
   )
   url="${url_item#*=}"
-  google-chrome-stable "$url" >/dev/null
+  google-chrome-stable "$url" >/dev/null &
   busctl_dbus_focus_last_window_class "$BROWSER_WM_CLASS"
   exit 0
 fi
