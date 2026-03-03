@@ -5,8 +5,13 @@
 # This script expect URLs to be set at $HOME/Documents/useful-urls with the following format:
 # "description1=https://example.com\ndescription2=https://example.com"
 
-USEFUL_URLS_FILE=~/Documents/useful-urls
-BROWSER_WM_CLASS=google-chrome
+USEFUL_URLS_FILE=${USEFUL_URLS_FILE:-~/Documents/useful-urls}
+BROWSER=${BROWSER:-"google-chrome-stable"}
+
+declare -A BROWSER_WM_CLASSES=(
+  ["google-chrome-stable"]="google-chrome"
+)
+BROWSER_WM_CLASS="${BROWSER_WM_CLASSES[$BROWSER]:-$BROWSER}"
 
 busctl_dbus_focus_last_window_class() {
   window_id=$(
@@ -34,7 +39,7 @@ if [[ -n "$input" ]]; then
     grep -h "^$input=" "$USEFUL_URLS_FILE"
   )
   url="${url_item#*=}"
-  google-chrome-stable "$url" >/dev/null &
+  "$BROWSER" "$url" >/dev/null &
   busctl_dbus_focus_last_window_class "$BROWSER_WM_CLASS"
   exit 0
 fi
