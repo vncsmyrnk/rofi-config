@@ -27,7 +27,7 @@ input="$*"
 if [[ -n "$input" ]]; then
   window_title="${input#*| }"
   window_id=$(
-    grep -h ";$window_title$" "$CACHE_FILE" |
+    grep -h -F ";$window_title" "$CACHE_FILE" |
       cut -d ';' -f1
   )
 
