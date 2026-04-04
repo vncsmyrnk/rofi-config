@@ -19,6 +19,7 @@ configuration {
   kb-mode-previous: "ISO_Left_Tab";
   kb-element-next: "";
   kb-element-prev: "";
+  show-icons: true;
 }
 
 * {
@@ -32,7 +33,12 @@ window {
 }
 
 element {
-  padding: 2px 2px 2px 10px;
+  padding: 2px 5px 2px 5px;
+}
+
+element-icon {
+  padding: 2px 5px 2px 5px;
+  size: 1.5ch;
 }
 
 entry {
