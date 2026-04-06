@@ -15,10 +15,12 @@ configuration {
     "util:~/.config/rofi/custom-modes/utils.sh",
     "powr:~/.config/rofi/custom-modes/power.sh"
   ];
-  kb-mode-next: "Tab";
-  kb-mode-previous: "ISO_Left_Tab";
-  kb-element-next: "";
-  kb-element-prev: "";
+  kb-secondary-copy: "";
+  kb-move-char-back: "Control+b";
+  kb-move-char-forward: "Control+f";
+  kb-cancel: "Escape,Control+c";
+  kb-mode-next: "Right";
+  kb-mode-previous: "Left";
   show-icons: true;
   display-combi: ">all";
 }
