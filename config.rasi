@@ -20,6 +20,7 @@ configuration {
   kb-element-next: "";
   kb-element-prev: "";
   show-icons: true;
+  display-combi: ">all";
 }
 
 * {
