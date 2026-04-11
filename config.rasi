@@ -21,6 +21,8 @@ configuration {
   kb-cancel: "Escape,Control+c";
   kb-mode-next: "Right";
   kb-mode-previous: "Left";
+  kb-element-next: "Tab,bracketright";
+  kb-element-prev: "ISO_Left_Tab,bracketleft";
   show-icons: true;
   display-combi: ">all";
 }
