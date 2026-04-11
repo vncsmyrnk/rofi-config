@@ -7,6 +7,7 @@ configuration {
     "combi",
     "pass:~/.config/rofi/custom-modes/pass.sh",
     "totp:~/.config/rofi/custom-modes/totp.sh",
+    "jobs:~/.config/rofi/custom-modes/jobs.sh",
     "pw2l:~/.config/rofi/custom-modes/pass-cp2l.sh",
     "opwn:~/.config/rofi/custom-modes/windows.sh",
     "appl:~/.config/rofi/custom-modes/applications.sh",
