@@ -26,10 +26,12 @@ if [[ -n "$input" ]]; then
   exit 0
 fi
 
+windows_str="${windows[*]}"
 while IFS= read -r line; do
   name=$(cut -d':' -f1 <<<"$line")
   cmd=$(cut -d':' -f2- <<<"$line")
-  if [[ " ${windows[*]} " =~ $name ]]; then
+  active_append=""
+  if [[ " $windows_str " =~ " $name " ]]; then
     active_append=" (running)"
   fi
   echo -e "$name\x00info\x1f$cmd\x1fdisplay\x1f$name$active_append"
