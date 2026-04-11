@@ -13,6 +13,7 @@ declare -A BROWSER_WM_CLASSES=(
 )
 BROWSER_WM_CLASS="${BROWSER_WM_CLASSES[$BROWSER]:-$BROWSER}"
 
+# TODO: use gwin
 busctl_dbus_focus_last_window_class() {
   window_id=$(
     busctl --user call \
