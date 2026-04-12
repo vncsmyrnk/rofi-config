@@ -29,8 +29,8 @@ fi
 
 running=()
 while IFS= read -r w; do
-  name=$(cut -d':' -f1 <<<"$w")
-  cmd=$(cut -d':' -f2- <<<"$w")
+  name=$(cut -d':' -f1 <<<"${w//\\/\\\\}")
+  cmd=$(cut -d':' -f2- <<<"${w//\\/\\\\}")
   label_suffix=""
   if [[ " ${windows[*]} " == *" $name "* ]]; then
     running+=("$name")
