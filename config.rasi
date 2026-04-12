@@ -13,7 +13,6 @@ configuration {
     "appl:~/.config/rofi/custom-modes/applications.sh",
     "tmux:~/.config/rofi/custom-modes/tmux-sessions.sh",
     "urls:~/.config/rofi/custom-modes/urls.sh",
-    "util:~/.config/rofi/custom-modes/utils.sh",
     "powr:~/.config/rofi/custom-modes/power.sh"
   ];
   kb-secondary-copy: "";
