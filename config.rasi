@@ -20,8 +20,8 @@ configuration {
   kb-move-char-back: "Control+b";
   kb-move-char-forward: "Control+f";
   kb-cancel: "Escape,Control+c";
-  kb-mode-next: "Right,apostrophe";
-  kb-mode-previous: "Left,quotedbl";
+  kb-mode-next: "Left,braceleft";
+  kb-mode-previous: "Right,braceright";
   kb-element-next: "Tab,bracketright";
   kb-element-prev: "ISO_Left_Tab,bracketleft";
   show-icons: true;
