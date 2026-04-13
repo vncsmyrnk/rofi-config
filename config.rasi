@@ -22,6 +22,7 @@ configuration {
   kb-mode-previous: "Right,braceright";
   kb-element-next: "Tab,bracketright";
   kb-element-prev: "ISO_Left_Tab,bracketleft";
+  kb-delete-entry: "Alt-q";
   show-icons: true;
   display-combi: ">all";
 }
