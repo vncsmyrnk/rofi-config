@@ -12,16 +12,21 @@ mapfile -t windows < <(util jobs list || true)
 
 input="$*"
 if [[ -n "$input" ]]; then
-  case "$input" in
-  "Kill all")
-    util jobs kill --all >/dev/null 2>&1
-    ;;
+  case "$ROFI_RETV" in
+  3) util jobs kill "$input" ;;
   *)
-    if [[ " ${windows[*]} " == *" $input "* ]]; then
-      util jobs attach "$input"
-      exit 0
-    fi
-    util jobs run "$input" "$ROFI_INFO"
+    case "$input" in
+    "Kill all")
+      util jobs kill --all >/dev/null 2>&1
+      ;;
+    *)
+      if [[ " ${windows[*]} " == *" $input "* ]]; then
+        util jobs attach "$input"
+        exit 0
+      fi
+      util jobs run "$input" "$ROFI_INFO"
+      ;;
+    esac
     ;;
   esac
   exit 0
