@@ -25,6 +25,7 @@ configuration {
   kb-delete-entry: "Alt-q";
   show-icons: true;
   display-combi: ">all";
+  matching: "fuzzy";
 }
 
 * {
