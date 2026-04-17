@@ -41,14 +41,14 @@ while IFS= read -r w; do
     running+=("$name")
     label_suffix="$LABEL_RUNNING_SUFIX"
   fi
-  echo -e "$name\x00info\x1f$cmd\x1fdisplay\x1f$name$label_suffix"
+  echo -e "$name\x00info\x1f$cmd\x1fmeta\x1f$label_suffix\x1fdisplay\x1f$name$label_suffix"
 done <"$PROCS_FILE"
 
 while IFS= read -r w; do
   if [[ " ${running[*]} " == *" $w "* ]]; then
     continue
   fi
-  echo -e "$w\x00info\x1f$cmd\x1fdisplay\x1f$w$LABEL_RUNNING_SUFIX"
+  echo -e "$w\x00info\x1f$cmd\x1fmeta\x1f$LABEL_RUNNING_SUFIX\x1fdisplay\x1f$w$LABEL_RUNNING_SUFIX"
 done < <(util jobs list)
 
 echo "Kill all"
