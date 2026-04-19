@@ -3,8 +3,12 @@
 # This leverages the GNOME Window Calls extension to raise opened applications listed on the rofi's menu
 # More at: https://github.com/vncsmyrnk/gwin
 
-if [[ -n "$*" ]]; then
-  gwin switch "$@" >/dev/null &
+input="$*"
+if [[ -n "$input" ]]; then
+  case "$ROFI_RETV" in
+  3) gwin close "$input" ;;
+  *) gwin switch "$input" >/dev/null & ;;
+  esac
   exit 0
 fi
 
