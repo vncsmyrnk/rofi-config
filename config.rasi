@@ -18,10 +18,10 @@ configuration {
   kb-move-char-back: "Control+b";
   kb-move-char-forward: "Control+f";
   kb-cancel: "Escape,Control+c";
-  kb-mode-next: "Left,braceleft";
-  kb-mode-previous: "Right,braceright";
-  kb-element-next: "Tab,bracketright";
-  kb-element-prev: "ISO_Left_Tab,bracketleft";
+  kb-mode-next: "Right";
+  kb-mode-previous: "Left";
+  kb-element-next: "Tab";
+  kb-element-prev: "ISO_Left_Tab";
   kb-delete-entry: "Alt-q";
   show-icons: true;
   display-combi: ">all";
