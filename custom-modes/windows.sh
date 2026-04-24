@@ -7,7 +7,7 @@ input="$*"
 if [[ -n "$input" ]]; then
   case "$ROFI_RETV" in
   3) gwin close "$input" ;;
-  *) gwin switch "$input" >/dev/null & ;;
+  *) gwin switch --id "$input" >/dev/null & ;;
   esac
   exit 0
 fi
