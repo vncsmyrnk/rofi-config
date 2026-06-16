@@ -8,10 +8,7 @@ if [[ -n "$*" ]]; then
 fi
 
 if [[ ! -f "$CACHE_FILE" ]]; then
-  fd . --base-directory ~/.secrets/totp --relative-path -t f |
-    rev |
-    cut -f2- -d "." |
-    rev |
+  util totp list |
     tee "$CACHE_FILE"
   exit 0
 fi
