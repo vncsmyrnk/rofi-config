@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Opens useful URLs using google chrome
+# Opens useful URLs on the default browser
 #
 # This script expect URLs to be set at $HOME/Documents/useful-urls with the following format:
 # "description1=https://example.com\ndescription2=https://example.com"
@@ -10,6 +10,7 @@ BROWSER=${BROWSER:-"google-chrome-stable"}
 
 declare -A BROWSER_WM_CLASSES=(
   ["google-chrome-stable"]="google-chrome"
+  ["firefox"]="firefox"
 )
 BROWSER_WM_CLASS="${BROWSER_WM_CLASSES[$BROWSER]:-$BROWSER}"
 
