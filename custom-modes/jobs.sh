@@ -5,26 +5,17 @@
 #
 # More at https://github.com/vncsmyrnk/shell-utils
 
-PROCS_FILE=${PROCS_FILE:-~/Documents/Procfile}
-LABEL_RUNNING_SUFIX=" (running)"
-
-mapfile -t windows < <(util jobs list || true)
-
 input="$*"
 if [[ -n "$input" ]]; then
   case "$ROFI_RETV" in
-  3) util jobs kill "$input" ;;
+  3) tmux-job-kill "$input" ;;
   *)
     case "$input" in
     "Kill all")
-      util jobs kill --all >/dev/null 2>&1
+      tmux-job-kill-all >/dev/null 2>&1
       ;;
     *)
-      if [[ " ${windows[*]} " == *" $input "* ]]; then
-        util jobs attach "$input"
-        exit 0
-      fi
-      util jobs run "$input" "$ROFI_INFO"
+      tmux-job-run "$input"
       ;;
     esac
     ;;
@@ -32,23 +23,12 @@ if [[ -n "$input" ]]; then
   exit 0
 fi
 
-running=()
-while IFS= read -r w; do
-  name=$(cut -d':' -f1 <<<"${w//\\/\\\\}")
-  cmd=$(cut -d':' -f2- <<<"${w//\\/\\\\}")
-  label_suffix=""
-  if [[ " ${windows[*]} " == *" $name "* ]]; then
-    running+=("$name")
-    label_suffix="$LABEL_RUNNING_SUFIX"
+while IFS=" " read -r name running; do
+  label_suffix=
+  if [[ "$running" = true ]]; then
+    label_suffix=" (running)"
   fi
-  echo -e "$name\x00info\x1f$cmd\x1fmeta\x1f$label_suffix\x1fdisplay\x1f$name$label_suffix"
-done <"$PROCS_FILE"
-
-while IFS= read -r w; do
-  if [[ " ${running[*]} " == *" $w "* ]]; then
-    continue
-  fi
-  echo -e "$w\x00info\x1f$cmd\x1fmeta\x1f$LABEL_RUNNING_SUFIX\x1fdisplay\x1f$w$LABEL_RUNNING_SUFIX"
-done < <(util jobs list)
+  echo -e "$name\x00meta\x1f$label_suffix\x1fdisplay\x1f$name$label_suffix"
+done < <(tmux-job-list | awk 'NR > 1')
 
 echo "Kill all"
